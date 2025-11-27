@@ -74,7 +74,7 @@ def registrar_usuario(request):
         
     
         print(usuario, clave,repetirClave)
-        return redirect("inicio_Sesion")
+        return redirect("inicio_sesion")
 
     return render(request, "registrar.html")
      

@@ -10,12 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from decouple import config
 from pathlib import Path
 import dj_database_url
 from django.contrib.messages import constants as messages
 import os
 from dotenv import load_dotenv
 from mongoengine import connect
+from pymongo import MongoClient
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Cargar archivo .env
 load_dotenv(os.path.join(BASE_DIR.parent, '.env'))
 
-connect(
-    db=os.getenv('momgo_db'),
-    host=os.getenv('mongo_url'),
-)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,7 +46,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 STATIC_URL = '/static/'
-
+MONGO_URL = config("MONGO_URL")
+MONGO_DB = config("MONGO_DB")
 
 # Application definition
 
@@ -93,12 +94,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-from decouple import config
+connect(
+    db=MONGO_DB,
+    host=MONGO_URL,
+    alias="default"
+)
 
 DATABASES = {
   'default': dj_database_url.config(
         default=config('DB_URL')
-    )
+    ),
+    
 }
 
 
