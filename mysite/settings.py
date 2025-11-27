@@ -45,12 +45,19 @@ SECRET_KEY = 'django-insecure-k(wm54io!^ia-b!8=4_$u8qsc@8hfq#c2n5(9xe5lsw@n2c+pk
 DEBUG = True
 
 ALLOWED_HOSTS = []
-STATIC_URL = '/static/'
+
 MONGO_URL = config("MONGO_URL")
 MONGO_DB = config("MONGO_DB")
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # o Path(BASE_DIR) / 'staticfiles'
+
+# Carpeta donde Django recopila los archivos estáticos para producción
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Archivos estáticos adicionales (si usas carpetas dentro de apps)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
