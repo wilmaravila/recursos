@@ -115,7 +115,13 @@ DATABASES = {
     
 }
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1").split(",")
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.railway.app',
+    'recursos-production.up.railway.app',
+    
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
