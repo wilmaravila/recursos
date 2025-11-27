@@ -28,7 +28,7 @@ load_dotenv(os.path.join(BASE_DIR.parent, '.env'))
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 LOGOUT_REDIRECT_URL = 'incio_sesion'
 LOGIN_URL = 'incio_sesion'
@@ -42,9 +42,12 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 SECRET_KEY = 'django-insecure-k(wm54io!^ia-b!8=4_$u8qsc@8hfq#c2n5(9xe5lsw@n2c+pk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'recursos-production.up.railway.app',
+    'recursosfincieros.com',
+]
 
 MONGO_URL = config("MONGO_URL")
 MONGO_DB = config("MONGO_DB")
@@ -56,16 +59,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # <--- Agrega esto
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+
 
 
 
@@ -75,11 +69,7 @@ MIDDLEWARE = [
 
 
 #dominio
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    os.getenv("RAILWAY_PUBLIC_DOMAIN", ""),
-]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,6 +83,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Debe ir aquí
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -100,6 +91,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -127,8 +119,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 connect(
     db=MONGO_DB,
     host=MONGO_URL,
-    alias="default"
+    alias="default",
+    tls=True,  # fuerza SSL
 )
+
 
 DATABASES = {
   'default': dj_database_url.config(
@@ -137,17 +131,12 @@ DATABASES = {
     
 }
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.railway.app',
-    'recursos-production.up.railway.app',
-    
-]
+
 CSRF_TRUSTED_ORIGINS = [
     'https://recursos-production.up.railway.app',
     'https://recursosfincieros.com',
 ]
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
