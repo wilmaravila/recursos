@@ -50,14 +50,8 @@ MONGO_URL = config("MONGO_URL")
 MONGO_DB = config("MONGO_DB")
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Carpeta donde se copian todos los archivos
 
-# Carpeta donde Django recopila los archivos estáticos para producción
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Archivos estáticos adicionales (si usas carpetas dentro de apps)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
