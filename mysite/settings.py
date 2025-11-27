@@ -42,7 +42,7 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 SECRET_KEY = 'django-insecure-k(wm54io!^ia-b!8=4_$u8qsc@8hfq#c2n5(9xe5lsw@n2c+pk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'recursos-production.up.railway.app',
