@@ -1,0 +1,27 @@
+{% load static %}
+
+<head>
+    <title>crear categoria</title>
+    <link rel="stylesheet" href="{% static 'calificaciones.css'%}">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Agrega una nueva categoria</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="categoria">Nombre Categoria</label>
+            <input type="text" name="nuevaCat">
+            <label for="">descripcion</label>
+            <textarea name="descripcion" id=""></textarea>
+            <select name="tipo" id="tipo">
+                {% for c in listTipo %}
+                <option value="{{c}}">{{c}}</option>
+                {% endfor %}
+            </select>
+            <button style="margin: 10px 0;" class="submit-btn" name="Agregar" value="guardar">Agregar Categoria</button>
+            <button style="margin: 10px 0;" class="submit-btn" name="Agregar" value="guardarMas">Agregar Categoria y seguir agregando</button>
+            <button style="margin: 10px 0;" class="cancel-btn" name="Agregar" value="cancelar">Salir</button>
+        </form> 
+    </div>
+</body>

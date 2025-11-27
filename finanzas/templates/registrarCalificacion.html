@@ -1,0 +1,33 @@
+{% load static %}
+
+<head>
+    <title>Registar calificacion</title>
+    <link rel="stylesheet" href="{% static 'calificaciones.css'%}">
+</head>
+<body>
+    <main class="container">
+
+        <h1>Agrega tu calificacion de nuestra aplicacion</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <label for="">Agrega tu comentario de nuestra aplicacion</label>
+            <textarea name="descripcion" id=""></textarea>
+            <label for="">Que calificacion le pondrias a nuestra aplicacion</label>
+            <select name="calificacion" id="calificacion">
+                
+                
+                {% for c in calificacion %}
+                <option value="{{c}}">{{c}}</option>
+                
+                {% endfor %}
+            </select>
+            
+            <button class="submit-btn" name="accion" value="agregar"> Agregar calificacion </button>
+            <button class="cancel-btn" name="accion" value="cancelar"> Cancaler</button>
+            
+            
+        </form>
+    </main>
+</body>

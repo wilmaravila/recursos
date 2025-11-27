@@ -1,0 +1,29 @@
+{% load static %}
+<head>
+    <title>Agregar Gasto</title>
+    <link rel="stylesheet" href="{% static 'ingresos.css'%}">
+</head>
+<body>
+    <main class="container">
+        <h1>Ingresa tus ingresos</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="categoria">Categoría</label>
+            <select name="categoria" id="categoria">
+                {% for valor in categoria %}
+                    <option value="{{ valor.id }}">{{ valor.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="" >Cantidad Gasto</label>
+            <input type="number" name="cantidadGasto">
+
+            <label>Fecha de Gasto</label>
+            <input type="date" name="fecha">
+
+             <button class="save-btn" name="Agregar" value="guardar">Agregar Gasto</button>
+            <button class="save-btn" name="Agregar" value="guardarMas">Agregar Gasto y seguir agregando</button>
+            <button class="cancel-btn" name="Agregar" value="cancelar">Cancelar Agregar Gasto</button>
+        </form> 
+    </main>
+</body>

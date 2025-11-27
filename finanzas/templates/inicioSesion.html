@@ -1,0 +1,37 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - Gestión de Finanzas</title>
+    <link rel="stylesheet" href="{% static 'sesion.css' %}">
+</head>
+
+<body>
+    
+    <main class="container">
+        <h1>INICIO DE SESION</h1>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Usuario</label>
+            <input type="text" name="usuario">
+            <label>contraseña</label>
+            <input type="password" name="password">
+            
+
+            <button class="save-btn" type="submit">Iniciar Sesión</button>
+        </form>
+
+        <a href="registar_usuario/">
+            <button class="save-btn" type="button">Registrarse</button>
+        </a>
+    </main>
+</body>

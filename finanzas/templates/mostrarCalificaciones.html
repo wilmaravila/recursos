@@ -1,0 +1,46 @@
+{% load static %}
+<head>
+    <title>Reseñas</title>
+    <link rel="stylesheet" href="{% static 'verCalificaciones.css' %}">
+</head>
+<body>
+   <div class="container-head">
+        
+       
+       <h2>Reseñas de la aplicación</h2>
+       <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="accion" value="regresar">Regresar</button>
+        </form>
+    </div> 
+    <div>
+
+        
+        <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+            <thead style="background-color: #f2f2f2; text-align: left;">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Descripción</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for p in calificaciones %}
+                <tr>
+                    <td>{{ p.usuarioName }}</td>
+                    <td>{{ p.descripcion }}</td>
+                    <td>{{ p.calificacion }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" style="text-align:center; color:gray;">
+                        No hay calificaciones registradas aún.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+</body>

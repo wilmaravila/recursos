@@ -1,0 +1,42 @@
+{% load static %}
+<head>
+
+        <title>registar usuario</title>
+        <link rel="stylesheet" href="{% static 'sesion.css'%}">
+</head>
+<body>
+    
+    <main class="container" >
+        <h1>Registar un nuevo usuario</h1>
+
+        <form method="POST" >
+            {% csrf_token %}
+
+            <label>Nombres </label>
+            <input type="text" name="nombres">
+            <label>Apellidos</label>
+            <input type="text" name="apellidos">
+
+            <label for="" >usuario</label>
+            <input type="text" name="usuario">
+            <label for="">contraseña</label>
+            <input type="password" name="password">
+            <label for="">Repetir contraseña</label>
+            <input type="password" name="repetPassword">
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li style="color:red;">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            <button class="save-btn" type="submit">Registar</button>
+
+
+        </form>
+        <p class="bottom-link">Ya tienes una cuenta?<a href="{% url 'incio_sesion' %}"> Inicia Sesion aqui</a> </p>
+        
+    </main>
+
+</body>
