@@ -6,3 +6,4 @@ python-decouple
 mongoengine
 python-dotenv
 matplotlib
+whitenoise

@@ -49,6 +49,17 @@ STATIC_URL = '/static/'
 MONGO_URL = config("MONGO_URL")
 MONGO_DB = config("MONGO_DB")
 
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # o Path(BASE_DIR) / 'staticfiles'
+
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # ... otros middlewares
+]
+
+
+
+
 # Application definition
 
 
@@ -122,7 +133,10 @@ ALLOWED_HOSTS = [
     'recursos-production.up.railway.app',
     
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://recursos-production.up.railway.app',
+    'https://recursosfincieros.com',
+]
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

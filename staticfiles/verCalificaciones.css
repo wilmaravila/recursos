@@ -1,0 +1,72 @@
+/* ==== CONTENEDOR DEL HEADER ==== */
+.container-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #ffffff;
+    border-bottom: 2px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.container-head h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+/* ==== BOTÓN VOLVER ==== */
+.container-head button {
+    padding: 10px 18px;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container-head button:hover {
+    background: #0056b3;
+}
+
+/* ==== TABLA ==== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+thead {
+    background-color: #f7f7f7;
+}
+
+thead th {
+    padding: 12px;
+    color: #333;
+    text-align: left;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+/* Filas */
+tbody tr {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+tbody tr:hover {
+    background-color: #f4f9ff;
+}
+
+/* Celdas */
+tbody td {
+    padding: 10px 12px;
+    color: #444;
+}
+
+/* Texto cuando no hay calificaciones */
+tbody tr td[colspan="3"] {
+    font-style: italic;
+    color: #666;
+}
