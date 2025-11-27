@@ -51,6 +51,14 @@ MONGO_DB = config("MONGO_DB")
 
 # Application definition
 
+
+#dominio
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    os.getenv("RAILWAY_PUBLIC_DOMAIN", ""),
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
