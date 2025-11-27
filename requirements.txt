@@ -4,3 +4,4 @@ pymysql
 dj-database-url
 python-decouple
 mongoengine
+python-dotenv
