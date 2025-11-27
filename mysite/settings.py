@@ -107,7 +107,7 @@ DATABASES = {
     
 }
 
-
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1").split(",")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
