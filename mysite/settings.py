@@ -120,7 +120,7 @@ connect(
     db=MONGO_DB,
     host=MONGO_URL,
     alias="default",
-    tls=True,  # fuerza SSL
+    
 )
 
 
